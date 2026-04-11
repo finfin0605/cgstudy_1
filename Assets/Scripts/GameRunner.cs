@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class GameRunner : MonoBehaviour // 定义一个 Unity 脚本类，用来控制游戏开始时的逻辑
 {
-    void Start()// Start() 会在游戏开始时自动执行一次
+    void Start()// Start() 在游戏开始时自动执行1次
     {
         Player player = new Player(10, 3);//造人   //初始 HP=10，ATK=3
         Monster slime = new Monster("슬라임", 8, 2);//造怪
@@ -18,7 +18,12 @@ public class GameRunner : MonoBehaviour // 定义一个 Unity 脚本类，用来
             if (slime.IsDead())//看看怪死没死
             {
                 Debug.Log(slime.name + "을 처치했습니다!!!");
-                break;
+
+                player.UpDateAfterSlime();
+                Debug.Log("공격력 +1, 최대 체력 +3");
+                Debug.Log("플레이어 - HP: " + player.hp + "/" + player.maxhp + ", ATK: " + player.atk);
+
+                break;//End loop
             }
 
             player.TakeDamage(slime.atk);//怪打玩家
