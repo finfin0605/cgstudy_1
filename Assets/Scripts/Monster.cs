@@ -1,23 +1,23 @@
 using UnityEngine;
 
-public class Monster
+public class Monster//定义怪物类
 {
     public string name;
-    public int hp;
-    public int maxhp;
-    public int atk;
+    public int hp;//当前体力
+    public int maxhp;//最大体力
+    public int atk;//怪物攻击力
 
     public Monster(string name,int hp,int atk) // 构造函数：创建怪物时初始化属性
     {
-        this.name = name;
-        this.hp = hp;
-        this.maxhp = hp;
-        this.atk = atk;
+        this.name = name;//名字=传入name
+        this.hp = hp;//当前体力=传入
+        this.maxhp = hp;//初始最大体力=初始体力
+        this.atk = atk;//攻击力=传入atk
     }
 
     public void TakeDamage(int damage) // 受伤函数：扣除体力
     {
-        hp -= damage;
+        hp -= damage;//当前体力-伤害值
 
         if (hp < 0)
         {
@@ -25,7 +25,7 @@ public class Monster
         }
     }
 
-    public bool IsDead()
+    public bool IsDead()//monster是否死亡
     {
         return hp <= 0;//如果体力小于等于 0，返回 true
     }
